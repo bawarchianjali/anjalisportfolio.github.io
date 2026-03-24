@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>silly portfolio</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav class="navbar">
+    <div class="nav-links">
+        <a href="index.html">HOME /</a>
+        <a href="archive.html">ARCHIVE</a>
+    </div>
+</nav>
+<section class="work-container">
+    <div class="project-grid">
+        <div class="project-card" onclick="openProject('project1')">
+            <div class="project-image">
+                <img src="./images/tsr/tsrcover1.png" alt="Project 1">
+                <span class="case-study-tag">CMF & VM</span>
+            </div>
+            <div class="project-info">
+                <h3>Theater Pop Up Store</h3>
+                <p>A Trend based Design Direction</p>
+            </div>
+        </div>
+
+        <div class="project-card" onclick="openProject('project2')">
+            <div class="project-image">
+                <img src="./images/cc/nikefull.gif" alt="Project 2">
+                <span class="case-study-tag">VM</span>
+            </div>
+            <div class="project-info">
+                <h3>Nike Store</h3>
+                <p>Store Experience Design</p>
+            </div>
+        </div>
+
+         <div class="project-card" onclick="openProject('project3')">
+            <div class="project-image">
+                <img src="./images/boultrender3.png" alt="Project 3">
+                <span class="case-study-tag">CMF</span>
+            </div>
+            <div class="project-info">
+                <h3>GoBoult Audio</h3>
+                <p>CMF</p>
+            </div>
+        </div>
+
+         <div class="project-card" onclick="openProject('project4')">
+            <div class="project-image">
+                <img src="./images/allmockzine.jpg" alt="Project 4">
+                <span class="case-study-tag">Zine</span>
+            </div>
+            <div class="project-info">
+                <h3>After Intelligence</h3>
+                <p>Publication Design</p>
+            </div>
+        </div>
+
+         <div class="project-card" onclick="openProject('project5')">
+            <div class="project-image">
+                <img src="./images/coverds.png" alt="Project 5">
+                <span class="case-study-tag">3D</span>
+            </div>
+            <div class="project-info">
+                <h3>The Pit</h3>
+                <p>Game Trailer</p>
+            </div>
+        </div>
+
+         <div class="project-card" onclick="openProject('project6')">
+            <div class="project-image">
+                <img src="./images/changedmock.jpg" alt="Project 6">
+                <span class="case-study-tag">UI/UX</span>
+            </div>
+            <div class="project-info">
+                <h3>Pathu's Pickle</h3>
+                <p>UI/UX</p>
+            </div>
+        </div>
+
+        </div>
+</section>
+
+<div id="project-overlay" class="project-overlay">
+    <button class="close-btn" onclick="closeProject()">&times; CLOSE</button>
+    <div id="overlay-content" class="overlay-content">
+        </div>
+</div>
+<script type="module" src="./main.js"></script>
+
+    <script src="./work.js"></script>
+</body>
+</body>
+</html>

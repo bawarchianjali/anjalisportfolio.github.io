@@ -1,0 +1,640 @@
+/* Font 1: For the Marquee (Bold/Heavy) */
+@font-face {
+    font-family: 'MarqueeFont';
+    src: url('./fonts/star-crush/Star\ Crush.ttf') format('truetype');
+    font-weight: normal;
+}
+
+/* Font 2: For the Navbar (Sleek/Thin) */
+@font-face {
+    font-family: 'NavFont';
+    src: url('./fonts/AdvinePixel-Regular.otf') format('truetype');
+    font-weight: normal;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    
+    background: #000;
+    overflow-x: hidden;
+    /* Makes custom/pixel fonts appear sharper and thinner on some browsers */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 40px; /* Spacing from the edges */
+    display: flex;
+    justify-content: flex-end; /* Pushes links to the right */
+    z-index: 1000; /* Stays above everything, including video */
+    background: transparent;
+}
+
+.nav-links a {
+    color: rgb(8, 8, 8);
+    text-decoration: none;
+    /* CHANGE THIS: Use your custom font name */
+    font-family: 'Helvetica', sans-serif; 
+    /* CHANGE THIS: Set to normal to remove the bold look */
+    font-weight: bold; 
+    font-size: 14px;
+    letter-spacing: 3px;
+    transition: opacity 0.3s ease;
+}
+
+
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 20px;
+    }
+    .nav-links {
+        gap: 20px;
+    }
+}
+#experience-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 0;
+}
+
+.scroll-section {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent !important;
+}
+
+#video-container {
+    width: 100%;
+    /* Remove height: 100vh so it doesn't force a full-screen box */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Keeps it at the very top */
+    background: black;
+}
+
+#intro-video {
+    width: 100%;        /* Fills the width of the phone */
+    height: auto;       /* Maintains the original resolution ratio */
+    max-height: none;  /* Ensures it doesn't overflow a single page */
+    display: block;
+    /* 'contain' ensures the whole frame is visible without zooming */
+    object-fit: contain; 
+}
+
+/* Ensure the first section respects the video's height */
+.scroll-section:first-of-type {
+        display: block !important;
+        height: auto !important;
+        min-height: 0 !important; /* Removes the 100vh force */
+    }
+#scroll-wrapper {
+    position: absolute;
+    bottom: 30px; /* Distance from bottom */
+    right: 30px;  /* Positioned to the right */
+    z-index: 2;
+    transition: opacity 0.5s ease;
+}
+
+.scroll-circle {
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.4); /* Low opacity black */
+    border: 1.5px solid rgba(255, 255, 255, 0.3); /* Subtle outer ring */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(4px); /* Optional: makes the black look sleeker */
+}
+
+.arrow-icon {
+    width: 12px;
+    height: 12px;
+    /* This creates the 'V' shape using borders */
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    transform: rotate(45deg); 
+    margin-top: -4px; /* Adjust for visual centering */
+    animation: arrow-bounce 2s infinite;
+}
+
+@keyframes arrow-bounce {
+    0%, 100% { transform: rotate(45deg) translate(0, 0); }
+    50% { transform: rotate(45deg) translate(3px, 3px); }
+}
+
+/* Ensure it hides when scrolling down */
+#scroll-wrapper.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+/* Update the video section to allow content to stack */
+.video-section {
+    flex-direction: column;
+    justify-content: flex-start; /* Aligns video to top */
+    height: auto; 
+    min-height: 100vh;
+}
+
+.marquee-container {
+    margin-top: 0 !important;
+        position: relative;
+        z-index: 5;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background: #ECE5DB; /* Your rectangle color */
+    display: flex; /* Keeps the two blocks side-by-side */
+}
+
+.marquee-content {
+    display: flex;
+    animation: marquee-infinite 10s linear infinite;
+}
+
+.marquee-text {
+    font-family: 'MarqueeFont', sans-serif;
+    font-size: clamp(1.3rem, 8vw, 4rem);
+    padding-right: 30px; /* Gap between the end and the start of the next loop */
+    flex-shrink: 0;      /* Prevents the text from squishing */
+}
+
+@keyframes marquee-infinite {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* Moves exactly one full block length */
+}
+.text-design-page {
+    position: relative; 
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    min-height: 100vh;
+    background: #f7567e;
+    /* This ensures it stays BEHIND the marquee if they touch */
+    z-index: 1; 
+    padding: 15%;
+}
+
+.about-text-content {
+    flex: 1; /* Takes up left side */
+    max-width: 600px;
+}
+
+.main-heading {
+    font-family: 'NavFont', sans-serif;
+    /* ADD THIS: Forces the browser to stop bolding the H2 */
+    font-weight: normal; 
+    font-size: clamp(4rem, 10vw, 100px);
+    color: #fffae3;
+    margin-top: 0px;
+    margin-bottom: 80px;
+    /* Optional: Pixel fonts often look cleaner with 0 letter-spacing */
+    letter-spacing: 0; 
+}
+/* The 'A' in Star Crush */
+.first-letter {
+    font-family: 'MarqueeFont', sans-serif;
+    font-size: 1.2em; /* Makes the A slightly larger like the reference */
+}
+
+.sub-text {
+    line-height: 1.8; /* Adds space between the 'strips' */
+}
+.highlight-box {
+    background-color: #ECE5DB; /* The off-white/cream from your marquee */
+    color: #1d1d1b;
+    font-family: 'MarqueeFont', sans-serif;
+    font-size: 24px;
+    font-weight: normal;
+    padding: 4px 10px;
+    
+    /* These three lines create the "Striped" rectangle effect */
+    display: inline;
+    box-shadow: 10px 0 0 #ECE5DB, -10px 0 0 #ECE5DB; 
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+}
+.about-wrapper {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 80px;
+}
+.about-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.profile-img {
+    width: 100%;
+    max-width: 600px; /* Keeps the cat image from getting too huge */
+    height: auto;
+    margin-right: -20%;
+}
+
+
+   /* --- FIXED MOBILE SECTION --- */
+@media (max-width: 768px) {
+    /* 1. Reset Body for mobile */
+    html, body {
+        height: auto !important;
+       overflow-y: auto !important;
+        overflow-x: hidden;
+    }
+
+    /* 2. Fix the Navbar spacing */
+    .navbar {
+        padding: 20px;
+    }
+    .nav-links {
+        gap: 20px;
+    }
+
+    /* 3. Make sections stack naturally */
+    .scroll-section, 
+    .text-design-page, 
+    .highlights-section {
+        display: block !important;
+        height: auto !important;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    /* 4. Remove the blank space between Marquee and Video/About */
+    .marquee-container {
+        margin-top: -2px; /* Pulls marquee up to the video */
+        margin-bottom: 0;
+    }
+
+    /* 5. Fix About Section Layout */
+    .text-design-page {
+        padding: 60px 20px !important;
+    }
+
+    .about-wrapper {
+        flex-direction: column;
+        gap: 30px;
+        margin-top: 0 !important;
+    }
+
+    .main-heading {
+        margin-top: 0 !important;
+        margin-bottom: 40px !important;
+    }
+
+    .about-image-container {
+        justify-content: center;
+    }
+
+    .profile-img {
+        margin-right: 0; /* Centering the image on mobile */
+        max-width: 100%;
+    }
+
+    /* 6. The Bloom Spacer (Allows scrolling to the end) */
+    .bloom-spacer {
+        height: 100vh; 
+        width: 100%;
+        display: block;
+    }
+} /* <--- This is the ONLY bracket that should end the media query */
+
+/* --- REST OF YOUR CODE --- */
+.work-container {
+    background: #ffffff;
+    padding: 120px 5% 60px;
+    min-height: 100vh;
+}
+
+.project-grid {
+    display: grid;
+    /* This creates 2 columns side-by-side */
+    grid-template-columns: repeat(2, 1fr); 
+    /* Adjust gap for spacing between project cards */
+    gap: 40px; 
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.project-card {
+    width: 100%;
+    cursor: pointer;
+}
+
+.project-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* Keeps all thumbnails the same size */
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+/* Container inside the overlay */
+.split-wrapper {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background: #fff;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* Left side: Images */
+.split-left {
+    flex: 1; /* Takes up 50% or more */
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.split-left img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    isolation: isolate;
+    
+    /* 2. Fixes the 'milky' gamma shift in Chrome/Safari */
+    image-rendering: -webkit-optimize-contrast;
+    
+    /* 3. Ensure no transparency or filters from the 3D bloom leak in */
+    opacity: 1 !important;
+    filter: brightness(1) contrast(1.1) !important;
+    
+    /* 4. This 'grounds' the image so the white background doesn't bleed through */
+    background: #000;
+    
+}
+
+/* Right side: Text info */
+.split-right {
+    flex: 0 0 400px; /* Fixed width for the text side */
+    padding: 60px 40px;
+    border-left: 1px solid #eee;
+    background: #fcfcfc;
+}
+
+/* Sticky behavior: Text stays while images scroll */
+.sticky-text {
+    font-family: sans-serif;
+    position: sticky;
+    top: 100px;
+}
+
+.sticky-text h1 {
+    font-size: 2.5rem;
+    font-family: sans-serif;
+    margin: 20px 0;
+    line-height: 1.1;
+}
+
+.sticky-text p {
+    font-size: 1.1rem;
+    font-family: sans-serif;
+    line-height: 1.6;
+    color: #444;
+}
+
+.project-meta {
+    margin-top: 40px;
+}
+
+.project-meta h4 {
+    font-size: 0.8rem;
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 6px;
+    margin-bottom: 3px;
+    color: #888;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .split-wrapper {
+        flex-direction: column;
+    }
+    .split-right {
+        flex: none;
+        width: 100%;
+        order: -1; /* Text appears first on mobile */
+        border-left: none;
+        border-bottom: 1px solid #fcfcfc;
+    }
+    .sticky-text {
+        position: static;
+    }
+}
+
+/* Mobile Fix: Stack them in 1 column on small screens */
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+.project-card:hover .project-image img {
+    transform: scale(1.05);
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+
+.case-study-tag {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    border: 1px solid rgba(255,255,255,0.5);
+    color: #fcfcfc;
+    padding: 5px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+    background-color: #1f1f1f;
+    backdrop-filter: blur(3px);
+}
+
+.project-info h3 {
+   font-family:'Helvetica', sans-serif;
+    color: #000000;
+    margin-top: 8px;
+    margin-bottom: 5px;
+   
+}
+
+.project-info p {
+   font-family:'Helvetica', sans-serif;
+   font-size: smaller;
+   font-weight: lighter;
+   font-style: italic;
+    color: #000000;
+   
+}
+
+/* Deep Dive Overlay Styling */
+.project-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    z-index: 100000;
+    overflow-y: auto; /* Allow the whole overlay to scroll */
+}
+
+.overlay-content {
+    width: 100%;
+    margin: 0; /* Remove margins to go edge-to-edge */
+}
+
+.close-btn {
+    position: fixed;
+    top: 30px;
+    right: 30px;
+    z-index: 10000;
+    background: #000;
+    color: #fcfcfc;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 50px;
+}
+@media (max-width: 768px) {
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+}
+
+.highlights-section {
+    padding: 100px 0;
+    background: #fffae3;
+    position: relative;
+    z-index: 10;
+}
+
+.highlights-title {
+    color: #dd4e28;
+    font-family:'MarqueeFont', sans-serif;
+    font-size: 36px;
+    letter-spacing: 4px;
+    text-align: center;
+    margin-bottom: 40px;
+    opacity: 0.6;
+}
+
+.highlights-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 30px;
+    padding: 0 10%; /* Provides padding so cards don't touch screen edges */
+    
+    /* THE FOCUS MAGIC */
+    scroll-snap-type: x mandatory; 
+    scrollbar-width: none; /* Hide scrollbar Firefox */
+    -webkit-overflow-scrolling: touch; /* Smooth iOS scroll */
+}
+
+.highlights-carousel::-webkit-scrollbar {
+    display: none; /* Hide scrollbar Chrome/Safari */
+}
+
+.highlight-card {
+    flex: 0 0 300px; /* Width of the rectangle */
+    height: 450px;   /* Height of the rectangle */
+    background: #111;
+    border-radius: 30px; /* Curved edges */
+    overflow: hidden;
+    position: relative;
+    text-decoration: none;
+    
+    /* THE FOCUS MAGIC */
+    scroll-snap-align: center; 
+    
+    transition: transform 0.5s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+/* Optional: Slight scale effect when not in focus (simulated hover) */
+.highlight-card:hover {
+    transform: scale(1.03);
+}
+
+.highlight-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-label {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    color: white;
+    font-size: 14px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.contact-card {
+    position: fixed;
+    top: 50%; /* Vertical Center */
+    left: 50%; /* Horizontal Center */
+    transform: translate(-50%, -40%); /* Starts slightly lower for animation */
+    z-index: 3000;
+    
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(15px);
+    
+    padding: 80px 40px; /* Much taller */
+    border-radius: 40px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    
+    width: 90%;
+    max-width: 600px; /* Much wider */
+    text-align: center;
+    font-family: sans-serif;
+    color: #fcfcfc;
+   
+    
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.contact-card.visible {
+    opacity: 1;
+    pointer-events: all;
+    transform: translate(-50%, -50%); /* Final perfectly centered position */
+}

@@ -1,0 +1,99 @@
+/* Font 1: For the Marquee (Bold/Heavy) */
+@font-face {
+    font-family: 'MarqueeFont';
+    src: url('./fonts/star-crush/Star\ Crush.ttf') format('truetype');
+    font-weight: normal;
+}
+
+/* Font 2: For the Navbar (Sleek/Thin) */
+@font-face {
+    font-family: 'NavFont';
+    src: url('./fonts/AdvinePixel-Regular.otf') format('truetype');
+    font-weight: normal;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px 40px; /* Spacing from the edges */
+    display: flex;
+    justify-content: flex-end; /* Pushes links to the right */
+    z-index: 1000; /* Stays above everything, including video */
+    background: transparent;
+}
+
+.nav-links a {
+    color: rgb(8, 8, 8);
+    text-decoration: none;
+    /* CHANGE THIS: Use your custom font name */
+    font-family: 'Helvetica', sans-serif; 
+    /* CHANGE THIS: Set to normal to remove the bold look */
+    font-weight: bold; 
+    font-size: 14px;
+    letter-spacing: 3px;
+    transition: opacity 0.3s ease;
+}
+
+
+.nav-links a:hover {
+    opacity: 0.6;
+}
+
+/* Mobile Adjustment */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 20px;
+    }
+    .nav-links {
+        gap: 20px;
+    }
+}
+
+/* The Container */
+
+
+.archive-grid {
+  line-height: 0;
+  column-count: 4;
+  column-gap: 15px;
+  width: calc(100% - 40px); /* Ensures 20px padding on each side */
+  max-width: 1200px;
+  
+  /* THIS IS THE KEY CHANGE */
+  margin: 120px auto 20px auto; /* Centers the container automatically */
+}
+
+/* The Individual Items */
+.grid-item {
+  display: inline-block; /* Essential for masonry flow */
+  width: 100%;
+  margin-bottom: 15px; /* Vertical spacing */
+}
+
+.grid-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px; /* For that rounded Pinterest look */
+  display: block;
+  background-color: #e3e1e1;
+}
+
+/* Responsive Design: Adjust columns for smaller screens */
+@media (max-width: 1000px) {
+  .archive-grid { column-count: 3; }
+}
+
+@media (max-width: 700px) {
+  .archive-grid { column-count: 2; }
+}
+
+@media (max-width: 400px) {
+  .archive-grid { column-count: 1; }
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>silly portfolio</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-links">
+            <a href="work.html">WORK /</a>
+            <a href="archive.html">ARCHIVE</a>
+        </div>
+    </nav>
+    
+    <canvas id="experience-canvas"></canvas>
+
+    <section class="scroll-section video-section">
+        <div id="video-container">
+            <video id="intro-video" autoplay muted loop playsinline>
+                <source src="./intro.mp4" type="video/mp4">
+            </video>
+        </div>
+        <div id="scroll-wrapper">
+            <div class="scroll-circle">
+                <div class="arrow-icon"></div>
+            </div>
+        </div>
+    </section>
+
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <div class="marquee-text">
+                WELCOME TO MY PORTFOLIO • WELCOME TO MY PORTFOLIO • WELCOME TO MY PORTFOLIO • 
+            </div>
+            <div class="marquee-text">
+                WELCOME TO MY PORTFOLIO • WELCOME TO MY PORTFOLIO • WELCOME TO MY PORTFOLIO • 
+            </div>
+        </div>
+    </div>
+
+    <section class="text-design-page">
+        <div class="about-wrapper">
+            <div class="about-text-content">
+                <h2 class="main-heading"><span class="first-letter">A</span>bout me</h2>
+                <p class="sub-text">
+                    <span class="highlight-box">
+                        Hi, I am Anjali Shukla - a 3rd year fashion communication student in National Institute of fashion Technology. For me design has always been my escape, exploring 1000+ different ways to work something out or be it learning new skills through design. I present to you my portfolio which is a livethrough to my world
+                    </span>
+                </p>
+            </div>
+            <div class="about-image-container">
+                <img src="./images/me.png" alt="That is me" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="highlights-section">
+    <h2 class="highlights-title">HIGHLIGHTS</h2>
+    <div class="highlights-carousel">
+        
+        <a href="work.html?project=project1" class="highlight-card">
+            <img src="./images/cc/tsr.gif" alt="Project 1">
+            <div class="card-label">01 / Theater Pop Up Store </div>
+        </a>
+
+        <a href="work.html?project=project2" class="highlight-card">
+            <img src="./images/cc/nike.gif" alt="Project 2">
+            <div class="card-label">02 / Nike Store (VM)</div>
+        </a>
+
+        <a href="work.html?project=project3" class="highlight-card">
+            <img src="./images/cc/boult.gif" alt="Project 3">
+            <div class="card-label">03 / GoBoult Audio (CMF)</div>
+        </a>
+
+        <a href="work.html?project=project4" class="highlight-card">
+            <img src="./images/cc/zine.gif" alt="Project 4">
+            <div class="card-label">04 / After Intelligence</div>
+        </a>
+
+        <a href="work.html?project=project5" class="highlight-card">
+            <img src="./images/dsccard-02.gif" alt="Project 5">
+            <div class="card-label">05 / The Pit</div>
+        </a>
+
+        <a href="work.html?project=project6" class="highlight-card">
+            <img src="./images/cc/pathu.gif" alt="Project 6">
+            <div class="card-label">06 / Pathu's Pickles</div>
+        </a>
+
+    </div>
+     <div id="scroll-wrapper">
+            <div class="scroll-circle">
+                <div class="arrow-icon"></div>
+            </div>
+        </div>
+</section>
+
+<section class="scroll-section bloom-container" style="height: 100vh; background: transparent;">
+    </section>
+
+    <section class="scroll-section"></section>
+
+  <div class="contact-card">
+        <h2>Get in Touch</h2>
+        <p>anjali.shukla@nift.ac.in</p>
+        <div class="social-links">
+            <a href="https://www.instagram.com/bawarchimei/">Instagram</a>
+            <a href="https://www.linkedin.com/in/anjalishukla27/">LinkedIn</a>
+            <a href="https://www.behance.net/anjalishukla7">Behance</a>
+        </div>
+    </div>
+
+    <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@v0.149.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@v0.149.0/examples/jsm/"
+      }
+    }
+    </script>
+    <script type="module" src="./main.js"></script>
+
+</body> </html>
